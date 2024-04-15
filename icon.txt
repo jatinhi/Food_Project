@@ -1,0 +1,106 @@
+ <i class="fa fa-xmark"></i>
+ <i class="fa-regular fa-bars-sort"></i>
+ <i class="fa-solid fa-moon"></i>
+ <header class="bg-indigo-700 fixed top-0 left-0 w-full z-50" >
+        <nav class="container relative h-14 flex w-full justify-between items-center bg-indigo-700 ">
+          <div class="text-white ">
+                <a href="#" class="text-2xl uppercase">
+                    Bur <span class="text-yellow-500">ger</span> Resturesnt 
+                </a>
+            </div>
+            <div class=" absolute top-0 left-0 w-full py-14 text-white border-b  border-yellow-500 md:block md:static md:py-0 md:border-none md:w-auto md:m-auto" id="nav-Menu">
+                <ul class="flex flex-col  gap-5 md:flex-row text-white">
+                    <li>
+                        <a href="index.html" class="nav__link hover:text-yellow-500 ease-in duration-200">Home</a>
+                    </li>
+                    <li>
+                        <a href="photo.html" class="hover:text-yellow-500 ease-in duration-200">Photo</a>
+                    </li>
+                    <li>
+                        <a href="#about" class="nav__link hover:text-yellow-500 ease-in duration-200">About Us</a>
+                    </li>
+                    <li>
+                        <a href="#menu" class="nav__link hover:text-yellow-500 ease-in duration-200">Menu</a>
+                    </li>
+                    <li>
+                        <a href="Feedback.html" class="nav__link hover:text-yellow-500 ease-in duration-200">Feedback</a>
+                    </li>
+                    <li>
+                        <a href="login.html" class="nav__link hover:text-yellow-500 ease-in duration-200">Login</a>
+                    </li>
+                </ul>
+
+                <!--Login Code-->
+                <%@page import="java.sql.*" %>
+<%@page import="java.io.*" %>
+
+<%
+String username = request.getParameter("username");
+String password = request.getParameter("password");
+
+if (name != null && password != null) {
+    try {
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/login", "root", "");
+        PreparedStatement st = cn.prepareStatement("select * from stud where username = ? and password = ?");
+        st.setString(1, username);
+        st.setString(2, password);
+        ResultSet rs = st.executeQuery();
+
+        // Check if there is any data in the result set
+        if (rs.next()) {
+            response.sendRedirect("admin.html");
+        } else {
+            response.sendRedirect("login.html");
+        }
+    } catch (Exception e) {
+        out.println(e);
+    }
+} else {
+    response.sendRedirect("login.html");
+}
+%>
+
+
+
+<div class="container items-center  gap-10 bg-white w-full text-black">
+        <div class="mx-auto">
+            <img src="./photo/b6.jpg" alt="Burger Images" class="w-[500px] h-[-300px] mx-auto p-5 columns-3 pb-14 mt-14" style="margin-right: 1500px; ">
+        </div>
+        <div class="Rubik">
+            <h1 class="uppercase text-3xl  md:basis-1/2 md:text-center lg:basis-3/5">HAPPY TUMMY WITH TASTY Burger </h1>
+    
+        <div class="mx-auto md:mx-0  ">
+        <P class="text-3xl">Fletcher Davis of Athens, Texas claimed to have invented the hamburger. According to oral histories, in the 1880s, he opened a lunch counter in Athens and served a 'burger' of fried ground beef patties with mustard and Bermuda onion between two slices of bread, with a pickle on the side.</P> 
+        </div>
+       <div class="text-base flex items-center gap-4 py-10 md:justify-center md:gap-10">
+       <div class="text-center">
+            <i class="fa fa-utensils text-yellow-500 text-3xl"></i>
+            <br/>
+            Delicious
+       </div> 
+       <br>
+        <div class="text-center">
+        <i class="fa fa-droplet text-yellow-500 text-3xl"></i>
+        <br/>
+        Fresh
+        </div>
+        <br>
+        <div class="text-center">
+        <i class="fa-brands fa-envira text-yellow-500 text-3xl"></i>
+        <br/>
+        organic
+       </div>
+        </div>
+       <div >
+        <a href="https://www.instagram.com/localburgercl/?hl=en" class="btn btn-primary bg-yellow-700 justify-center " > Learn More </a>
+       </div>
+        </div>
+     </div>
+        </div>
+     <br>
+
+        <div class="text-center bg-indigo-950 text-white"> @Copyright 2024,Burger Resturesnt .All Rights Reserved </div>
+    </div> 
+</section>
+
+ 
